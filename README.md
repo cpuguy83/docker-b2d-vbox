@@ -9,10 +9,10 @@ Folks at Docker are working on a solution to this problem, but until then, here
 is a containerized way to add add vbox shared folders support to boot2docker.
 
 ```bash
-export KERNEL_VERSION=3.15.3
+export B2D_KERNEL_VERSION=$(boot2docker ssh uname -r)
 docker run --rm --privileged -v /:/b2d -it \
-  -v /lib/modules/${KERNEL_VERSION}-tinycore64:/lib/modules/${KERNEL_VERSION}-tinycore64 \
-  -e KERNEL_VERSION=${KERNEL_VERSION} \
+  -v /lib/modules/${B2D_KERNEL_VERSION}:/lib/modules/${B2D_KERNEL_VERSION} \
+  -e KERNEL_VERSION=$(echo $B2D_KERNEL_VERSION | sed 's/-.*//') \
   cpuguy83/b2d-vboxsf
 ```
 KERNEL_VERSION here is the kernel version used by your boot2docker install.
