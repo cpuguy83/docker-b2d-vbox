@@ -15,7 +15,7 @@ docker run --rm --privileged -v /:/b2d -it \
   -e KERNEL_VERSION=$(echo $B2D_KERNEL_VERSION | sed 's/-.*//') \
   cpuguy83/b2d-vboxsf
 ```
-KERNEL_VERSION here is the kernel version used by your boot2docker install.
+B2D_KERNEL_VERSION here is the kernel version used by your boot2docker install.
 The most current boot2docker as of this writing is 3.15.3
 
 Once the above command is run the vboxsf modules should be added to boot2docker.
